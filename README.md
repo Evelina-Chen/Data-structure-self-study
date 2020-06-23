@@ -34,7 +34,7 @@
 
 - 图解：
 
-  ![image](https://github.com/Evelina-Chen/Data-structure-self-study-/blob/master/image/bubble sort.png)
+  ![image](https://github.com/Evelina-Chen/Data-structure-self-study-/blob/master/image/bubblesort.png)
 
 - 代码实现：（将数组从大到小排序）
 
