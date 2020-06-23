@@ -32,28 +32,49 @@
 
   ④完成一遍上述操作后，最大的元素将在最后的位置。 然后我们将N减少1，并重复上述步骤，直到N = 1。
 
+- 图解：
+
+  ![image](https://github.com/Evelina-Chen/Data-structure-self-study-/blob/master/image/bubble sort.png)
+
 - 代码实现：（将数组从大到小排序）
 
-    `void bubble(int a[], int N)`
-    `{`
-        `for (int i = 0; i < N-1; i++)//当i=N-1时，a[N-1]已经是数组的最后一个元素了，没有相邻元素，也不需要继续比较。这也就是思想中所提到的N=1的情况`
-        `{`
-            `for (int j = i + 1; j < N; j++)`
-            `{`
-                `if (a[i] > a[j])`
-                `{`
-                    `int t;`
-                    `t = a[i];`
-                    `a[i] = a[j];`
-                    `a[j] = t;`
-                `}`
-            `}`
-        `}`
-    `}`
+    void bubble(int a[], int N)s
+    {
+
+        for (int i = 0; i < N-1; i++)//i++等效于N--
+        {
+            for (int j = i + 1; j < N; j++)
+            {
+                
+                if (a[j-1] > a[j])
+                {
+                    int t;
+                    t = a[j-1];
+                    a[j-1] = a[j];
+                    a[j] = t;
+                }
+            }
+        }
+    }
 
 - 总迭代次数： N ×（N-1）/ 2
 
-  
+    ### 选择排序（ Selection Sort）
 
+    - 时间复杂度：O(N²)
 
+    - 思想：
 
+        对于有N个元素的数组，设 **L = 0** ，选择排序将进行以下操作：
+
+      ①在 **[L ... N-1]** 范围内找出最小项目 X的位置，
+
+      ②用第 **L** 项交换X，
+
+      ③将下限 **L** 增加1并重复步骤1直到 **L = N-2**。
+
+    - 代码实现：
+
+      
+
+    
