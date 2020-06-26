@@ -2,7 +2,7 @@
 
 ## 写在前头
 
-这个大概算是自学数据结构的笔记，会（努力）将所有的东西尝试实现之后上传，希望不要咕咕咕。
+这个大概算是自学数据结构的笔记，会（努力）将所有的东西尝试实现之后上传，代码在readme和code文件夹里都有，希望不要咕咕咕。
 
 能力有限，估计会有很多的疏漏和错误，仅供参考，大家一起进步。
 
@@ -14,7 +14,20 @@
 
 #### <a href='#1.1'>冒泡排序(bubble sort)</a>
 
+### <a href='#1.2'>选择排序(selection Sort)</a>
+
 ## <a name='1'>排序</a>
+
+在实现排序函数时，有时会用到swap函数，即交换两个数的值，以下是swap函数的具体内容，在排序的具体实现过程中不再重复实现
+
+```
+void swap(int* a, int* b)
+{
+	int t = *a;
+	*a = *b;
+	*b = t;
+}
+```
 
 ### <a name='1.1'>冒泡排序(bubble sort)</a>
 
@@ -36,36 +49,35 @@
 
   ![image](https://github.com/Evelina-Chen/Data-structure-self-study-/blob/master/image/bubblesort.png)
 
-- 代码实现：（将数组从大到小排序）
+- 代码实现：
 
-    void bubble(int a[], int N)s
-    {
+    ```
+    void bubble(int a[], int N) 
+     { 
+         for (int i = 0; i < N-1; i++)//当i=N-1时，a[N-1]已经是数组的最后一个元素了，没有相邻元素，也不需要继续比较。这也就是思想中所提到的N=1的情况 
+         { 
+             for (int j = i + 1; j < N; j++) 
+             { 
+                 if (a[i] > a[j]) 
+                 { 
+                     swap(&a[i],&a[j]);
+                 } 
+             } 
+         } 
+     } 
+    ```
 
-        for (int i = 0; i < N-1; i++)//i++等效于N--
-        {
-            for (int j = i + 1; j < N; j++)
-            {
-                
-                if (a[j-1] > a[j])
-                {
-                    int t;
-                    t = a[j-1];
-                    a[j-1] = a[j];
-                    a[j] = t;
-                }
-            }
-        }
-    }
+    
 
 - 总迭代次数： N ×（N-1）/ 2
 
-    ### 选择排序（ Selection Sort）
+    ### <a name='1.1'>选择排序(selection Sort)</a>
 
     - 时间复杂度：O(N²)
 
     - 思想：
 
-        对于有N个元素的数组，设 **L = 0** ，选择排序将进行以下操作：
+      对于有N个元素的数组，设 **L = 0** ，选择排序将进行以下操作：
 
       ①在 **[L ... N-1]** 范围内找出最小项目 X的位置，
 
@@ -73,8 +85,41 @@
 
       ③将下限 **L** 增加1并重复步骤1直到 **L = N-2**。
 
+      简单来说就是：
+
+      从第0个到第N-1个元素中找到最小的元素，将最小元素与第0个元素互换位置
+
+      从第1个到第N-1个元素中找到最小的元素（即整个数组倒数第二小的元素），将最小元素与第1个元素互换位置
+    
+      以此类推
+    
+      - 图解：
+    
+      ![image](https://github.com/Evelina-Chen/Data-structure-self-study-/blob/master/image/selectionsort.png)
+    
     - 代码实现：
-
+    
+      ```
+      void select(int a[], int N)
+      {
+      	for (int i = 0; i <= N-2; i++)
+      	{
+      		int mix = a[i];//假设当前值为最小值
+      		for (int j = i + 1; j < N; j++)
+      		{
+      			if (mix > a[j])//找到了新的最小值
+      			{
+      				swap(&mix, &a[j]);
+      			}
+      		}
+      		swap(&mix, &a[i]);
+      	}
+      }
       
-
+      
+      
+      ```
+      
+      
+    
     
