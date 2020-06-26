@@ -95,7 +95,7 @@ void swap(int* a, int* b)
     
       - 图解：
     
-      ![image](https://github.com/Evelina-Chen/Data-structure-self-study-/tree/master/image/selectionsort.png)
+      ![image](https://github.com/Evelina-Chen/Data-structure-self-study-/blob/master/image/selectionsort.png)
     
     - 代码实现：
     
