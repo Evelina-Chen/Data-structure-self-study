@@ -133,7 +133,9 @@ void swap(int* a, int* b)
 
   3.重复1，2步骤
 
-- 图解：![image](https://github.com/Evelina-Chen/Data-structure-self-study-/blob/master/image/insertionSort.png)
+- 图解：
+
+- ![image](https://github.com/Evelina-Chen/Data-structure-self-study-/blob/master/image/insertionSort.png)
 
 - 代码实现：
 
