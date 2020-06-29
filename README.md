@@ -51,7 +51,7 @@ void swap(int* a, int* b)
 
 - 图解：
 
-  ![image](https://github.com/Evelina-Chen/Data-structure-self-study-/blob/master/image/bubblesort.png)
+  ![image](https://github.com/Evelina-Chen/Data-structure-self-study/blob/master/image/bubblesort.png)
 
 - 代码实现：
 
