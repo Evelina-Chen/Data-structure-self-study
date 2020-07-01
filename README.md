@@ -18,6 +18,8 @@
 
 #### <a href='#1.3'>插入排序(insertion Sort)</a>
 
+#### <a href='#1.4'>归并排序(Merge Sort)</a>
+
 ## <a name='1'>排序</a>
 
 ### swap函数
@@ -47,31 +49,29 @@ void swap(int* a, int* b)
 
   ③重复步骤1和2，直到到达数组的末尾（第（N-2）和（N-1）项）
 
-  ④完成一遍上述操作后，最大的元素将在最后的位置。 然后我们将N减少1，并重复上述步骤，直到N = 1。
+  ④完成一遍上述操作后，最大的元素将在最后的位置。 然后我们将N减少1，并重复上述步骤，直到N = 1
 
-- 图解：
+  
 
-  ![image](https://github.com/Evelina-Chen/Data-structure-self-study/blob/master/image/bubblesort.png)
+  简单来讲，就是重复比较相邻元素，从第0项遍历到第N-1项，这样一来第0项到第N-1项的最大项就会移动到第N-1项的位置，这时N减少1，然后重复比较，直到N=1
 
 - 代码实现：
 
     ```
-    void bubble(int a[], int N) 
-     { 
-         for (int i = 0; i < N-1; i++)//当i=N-1时，a[N-1]已经是数组的最后一个元素了，没有相邻元素，也不需要继续比较。这也就是思想中所提到的N=1的情况 
-         { 
-             for (int j = i + 1; j < N; j++) 
-             { 
-                 if (a[i] > a[j]) 
-                 { 
-                     swap(&a[i],&a[j]);
-                 } 
-             } 
-         } 
-     } 
+    void bubblesort(int a[], int N)
+    {
+    	for (int i = 0; i < N - 1; i++)//i++等效于N--
+    		for (int j = 0; j < N - 1 - i; j++)
+    			if (a[j] > a[j + 1])
+    				swap(a[j], a[j + 1]);
+    }
     ```
 
     
+
+- 图解：
+
+    ![image](https://github.com/Evelina-Chen/Data-structure-self-study/blob/master/image/bubblesort.png)
 
 - 总迭代次数： N ×（N-1）/ 2
 
@@ -121,7 +121,7 @@ void swap(int* a, int* b)
   }
   ```
 
-### <a name='1.3'>插入排序(insertion Sort)</a>
+### <a name='1.4'>插入排序(insertion Sort)</a>
 
 - 时间复杂度：O(N²)
 
@@ -163,3 +163,25 @@ void swap(int* a, int* b)
   ```
   
   
+  
+  ### <a name='1.4'>归并排序(Merge Sort)</a>
+  
+  - 思想：
+  
+    给定一个N个项目的数组，归并排序将：
+  
+    1. 将每对单个元素（默认情况下，已排序）归并为2个元素的有序数组，
+    2. 将2个元素的每对有序数组归并成4个元素的有序数组，重复这个过程......，
+    3. 最后一步：归并2个N / 2元素的排序数组（为了简化讨论，我们假设N是偶数）以获得完全排序的N个元素数组。
+  
+    简单来讲，就是将数组分为一个一个的小组，先在小组内进行排序，然后合并多个小组，在对小组进行排序。
+  
+    将小组合并后比较时，每次比较小组的最左侧元素（即最小元素），将较小者取出，然后继续比较。
+  
+  - 图解：
+  
+  - ![image](https://github.com/Evelina-Chen/Data-structure-self-study-/blob/master/image/，mergeSort.png)
+  
+    
+  
+    
