@@ -161,27 +161,105 @@ void swap(int* a, int* b)
   	}
   }
   ```
+
   
+
   
-  
+
   ### <a name='1.4'>归并排序(Merge Sort)</a>
-  
+
+  归并排序是分治法的经典应用
+
   - 思想：
   
     给定一个N个项目的数组，归并排序将：
-  
+
     1. 将每对单个元素（默认情况下，已排序）归并为2个元素的有序数组，
-    2. 将2个元素的每对有序数组归并成4个元素的有序数组，重复这个过程......，
+  2. 将2个元素的每对有序数组归并成4个元素的有序数组，重复这个过程......，
     3. 最后一步：归并2个N / 2元素的排序数组（为了简化讨论，我们假设N是偶数）以获得完全排序的N个元素数组。
-  
+
     简单来讲，就是将数组分为一个一个的小组，先在小组内进行排序，然后合并多个小组，在对小组进行排序。
-  
+
     将小组合并后比较时，每次比较小组的最左侧元素（即最小元素），将较小者取出，然后继续比较。
-  
+
   - 图解：
+
+    ![image](https://github.com/Evelina-Chen/Data-structure-self-study-/blob/master/image/，mergeSort.png)
   
-  - ![image](https://github.com/Evelina-Chen/Data-structure-self-study-/blob/master/image/，mergeSort.png)
+  - 代码实现：
   
+    //实现归并排序对我有些困难，这里引用了https://blog.csdn.net/a130737/article/details/38228369的代码，侵删
     
-  
+    ```
+    /* Merge sort in C++ */
+    #include <cstdio>
+    #include <iostream>
+     
+    using namespace std;
+     
+    // Function to Merge Arrays L and R into A.
+    // lefCount = number of elements in L
+    // rightCount = number of elements in R.
+    void Merge(int *A,int *L,int leftCount,int *R,int rightCount) {
+    	int i,j,k;
+     
+    	// i - to mark the index of left aubarray (L)
+    	// j - to mark the index of right sub-raay (R)
+    	// k - to mark the index of merged subarray (A)
+    	i = 0; j = 0; k =0;
+     
+    	while(i<leftCount && j< rightCount) {
+    		if(L[i]  < R[j]) A[k++] = L[i++];
+    		else A[k++] = R[j++];
+    	}
+    	while(i < leftCount) A[k++] = L[i++];
+    	while(j < rightCount) A[k++] = R[j++];
+    }
+     
+    // Recursive function to sort an array of integers.
+    void MergeSort(int *A,int n) {
+    	int mid,i, *L, *R;
+    	if(n < 2) return; // base condition. If the array has less than two element, do nothing.
+     
+    	mid = n/2;  // find the mid index.
+     
+    	// create left and right subarrays
+    	// mid elements (from index 0 till mid-1) should be part of left sub-array
+    	// and (n-mid) elements (from mid to n-1) will be part of right sub-array
+    	L = new int[mid];
+    	R = new int [n - mid];
+     
+    	for(i = 0;i<mid;i++) L[i] = A[i]; // creating left subarray
+    	for(i = mid;i<n;i++) R[i-mid] = A[i]; // creating right subarray
+     
+    	MergeSort(L,mid);  // sorting the left subarray
+    	MergeSort(R,n-mid);  // sorting the right subarray
+    	Merge(A,L,mid,R,n-mid);  // Merging L and R into A as sorted list.
+    	// the delete operations is very important
+    	delete [] R;
+    	delete [] L;
+    }
+     
+    int main() {
+    	/* Code to test the MergeSort function. */
+     
+    	int A[] = {6,2,3,1,9,10,15,13,12,17}; // creating an array of integers.
+    	int i,numberOfElements;
+     
+    	// finding number of elements in array as size of complete array in bytes divided by size of integer in bytes.
+    	// This won't work if array is passed to the function because array
+    	// is always passed by reference through a pointer. So sizeOf function will give size of pointer and not the array.
+    	// Watch this video to understand this concept - http://www.youtube.com/watch?v=CpjVucvAc3g
+    	numberOfElements = sizeof(A)/sizeof(A[0]);
+     
+    	// Calling merge sort to sort the array.
+    	MergeSort(A,numberOfElements);
+     
+    	//printing all elements in the array once its sorted.
+    	for(i = 0;i < numberOfElements;i++)
+    	   cout << " " << A[i];
+    	return 0;
+    }
+    ```
+    
     
