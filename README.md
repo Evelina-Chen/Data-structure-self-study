@@ -6,6 +6,10 @@
 
 能力有限，估计会有很多的疏漏和错误，仅供参考，大家一起进步。
 
+因为墙的原因，突然不能看GitHub上的图片了，从归并排序以后的部分的图片可能会出现插入错误的问题，可以从image文件夹中找到对应图片
+
+快速排序学的有点懵，暂缺，等学明白以后会补上
+
 用到的网站：[VisuAlgo-通过动画可视化数据结构和算法](https://visualgo.net/en)，强烈推荐。出于版权考虑，笔记和代码会自己写一遍，但是核心思想都来自这个网站。
 
 ## 目录
@@ -19,6 +23,12 @@
 #### <a href='#1.3'>插入排序(insertion Sort)</a>
 
 #### <a href='#1.4'>归并排序(Merge Sort)</a>
+
+#### <a href='#1.5'>快速排序(Quick Sort)**暂缺**</a>
+
+### <a href='#1.6'>计数排序(Counting Sort)</a>
+
+### <a href='#1.7'>基数排序(Radix Sort)</a>
 
 ## <a name='1'>排序</a>
 
@@ -121,7 +131,7 @@ void swap(int* a, int* b)
   }
   ```
 
-### <a name='1.4'>插入排序(insertion Sort)</a>
+### <a name='1.3'>插入排序(insertion Sort)</a>
 
 - 时间复杂度：O(N²)
 
@@ -166,7 +176,7 @@ void swap(int* a, int* b)
 
   
 
-  ### <a name='1.4'>归并排序(Merge Sort)</a>
+### <a name='1.4'>归并排序(Merge Sort)</a>
 
   归并排序是分治法的经典应用
 
@@ -176,15 +186,15 @@ void swap(int* a, int* b)
 
     1. 将每对单个元素（默认情况下，已排序）归并为2个元素的有序数组，
   2. 将2个元素的每对有序数组归并成4个元素的有序数组，重复这个过程......，
-    3. 最后一步：归并2个N / 2元素的排序数组（为了简化讨论，我们假设N是偶数）以获得完全排序的N个元素数组。
+        3. 最后一步：归并2个N / 2元素的排序数组（为了简化讨论，我们假设N是偶数）以获得完全排序的N个元素数组。
 
     简单来讲，就是将数组分为一个一个的小组，先在小组内进行排序，然后合并多个小组，在对小组进行排序。
-
+    
     将小组合并后比较时，每次比较小组的最左侧元素（即最小元素），将较小者取出，然后继续比较。
 
   - 图解：
 
-    ![image](https://github.com/Evelina-Chen/Data-structure-self-study-/blob/master/image/，mergeSort.png)
+    ![image](https://github.com/Evelina-Chen/Data-structure-self-study-/blob/master/image/mergeSort.png)
   
   - 代码实现：
   
@@ -262,4 +272,34 @@ void swap(int* a, int* b)
     }
     ```
     
-    
+
+### <a name='1.5'>快速排序(Quick Sort)暂缺</a>
+
+一定不会咕咕咕的
+
+### <a name='1.6'>计数排序(Counting Sort)</a>
+
+计数排序是不急于比较的排序方法
+
+计数排序适合小范围的数字的排序
+
+- 思想：计算这个范围内每个数字出现的次数，然后一次打印
+
+  比如：所有的数字都在[0,9]范围内，计算每个数字出现的次数,c0,c1,c2...，然后一次输出c0个0，c1个1，c2个2...
+
+- 局限性：
+
+  不适用于数据范围较大的排序
+
+  不适用于数据有小数的排序
+
+- 图解
+
+  ![image](https://github.com/Evelina-Chen/Data-structure-self-study-/blob/master/image/countingsort.png)
+
+
+
+### <a name='1.7'>基数排序(Radix Sort)</a>
+
+
+
